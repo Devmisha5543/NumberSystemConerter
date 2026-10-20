@@ -36,47 +36,61 @@ def decimal_binary():
         decimal_num = decimal_num // 2
     print("The binary equivalent of decimal number decimal_num is: ", binary[::-1])
 
+
 def decimal_to_hex():
-    A = 10
-    B = 11
-    C = 12
-    D = 13
-    E = 14
-    F = 15
+    A = "A"
+    B = "B"
+    C = "C"
+    D = "D"
+    E = "E"
+    F = "F"
+
     while True:
         decimal_num = input("Enter a decimal number: ")
+
         try:
             decimal_num = int(decimal_num)
-            break
-        except ValueError:
-            print("Please enter valid decimal number and try again.")
 
-    Ddigits = [int(bit) for bit in decimal_num]
-    hex = []
-        
+            if decimal_num < 0:
+                print("Please enter a non-negative decimal number.")
+                continue
+
+            break
+
+        except ValueError:
+            print("Please enter a valid decimal number and try again.")
+
+    hex_digits = []
+
     if decimal_num == 0:
-        print("The hexdecimal equivalent for a decimal number 0 is: 0" )
+        print("The hexadecimal equivalent is: 0")
+        return
+
     while decimal_num > 0:
         num = decimal_num % 16
-        if num == 10:
-            hex.append(A)
-        elif num == 11:
-            hex.append(B)
-        elif num == 12:
-            hex.append(C)
-        elif num == 13:
-            hex.append(D)
-        elif num == 14:
-            hex.append(E)
-        elif num == 15:
-            hex.append(F)
-        else:
-            hex.append(num)
-        decimal_num = decimal_num // 2
 
-print("The hexadecimal equivalent of decimal number decimal_num is: ", hex[::-1])
+        if num == 10:
+            hex_digits.append(A)
+        elif num == 11:
+            hex_digits.append(B)
+        elif num == 12:
+            hex_digits.append(C)
+        elif num == 13:
+            hex_digits.append(D)
+        elif num == 14:
+            hex_digits.append(E)
+        elif num == 15:
+            hex_digits.append(F)
+        else:
+            hex_digits.append(str(num))
+
+        decimal_num = decimal_num // 16
+
+    print("The hexadecimal equivalent is:", "".join(hex_digits[::-1]))
+
 
 decimal_to_hex()
+
 ##print(Ddigits)
 ##decimal_binary()
 ##binary_decimal()
